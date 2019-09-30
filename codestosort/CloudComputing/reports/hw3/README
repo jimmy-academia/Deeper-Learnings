@@ -1,0 +1,3 @@
+hbase-cluster is for creating docker image
+src contains run.py and plot.py for creating hbase tables and retrieving data + plot
+plot results in plot directory
