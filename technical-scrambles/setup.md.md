@@ -1,33 +1,41 @@
-# Basics
-```ls``` | list file/ ```ls -a``` for hidden (ex: .ssh/, .bash_profile)  
-```cd``` | move to folder ( ```cd ..``` for parent folder)  
-```mkdir``` | create a folder  
-```touch``` | create a file  
+# setting up a server
+>after you connect to the server, set up your local device and server in the following methods to automate your work!
 
-```scp file user@remotehost```
-ref: https://www.hypexr.org/linux_scp_help.php 
+## ssh automation
 
-# ssh
-basic usage:
-ssh username@userip
+### 1. use ssh config
 
-create ssh key for ssh into remote server: ```ssh-keygen```; ```ssh-copy-id username@remote_host```  
-issue: key too open
+create with ```touch ~/.ssh/config```
+typical config file example:
 ```
-sudo chmod 600 ~/.ssh/id_rsa
-sudo chmod 600 ~/.ssh/id_rsa.pub
+Host server
+    HostName <ip address>
+    User jimmy
+    Port 1000
+    ServerAliveInterval 60
 ```
 
-use ssh agent and save time
-```ssh-add```
+### 2. use ssh keys
 
-ref:
+in local, (if no ```~/.ssh/id_rsa``` exists):
+do  ```ssh-keygen```  
+then do ```ssh-copy-id username@remote_host``` and login with password  
+> possible issue: key too open
+> ```
+> sudo chmod 600 ~/.ssh/id_rsa
+> sudo chmod 600 ~/.ssh/id_rsa.pub
+> ```
+
+finally use ssh agent and save time ```ssh-add```
+
+
+> ref:
 (ssh key)   https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1604  
 (key too open issue)  https://www.howtogeek.com/168119/fixing-warning-unprotected-private-key-file-on-linux/  
 (ssh agent)  https://unix.stackexchange.com/questions/12195/how-to-avoid-being-asked-passphrase-each-time-i-push-to-bitbucket   
 
 
-# .bashrc/.bash_profile
+### 3. setup .bashrc/.bash_profile in server
 
 some functions I add in .bashrc
 
@@ -54,13 +62,13 @@ last function is for git
 ref:  
 (how bashrc work)https://www.thegeekstuff.com/2008/10/execution-sequence-for-bash_profile-bashrc-bash_login-profile-and-bash_logout/
 
-#### Cautions and debuggings
+> Cautions and debuggings
 editing .bashrc have no effect at first cause the server I ssh into
 is actually using zsh, took me a while to realize.
 simply adding ```source .bashrc``` in zshrc finished it all.
 
 
-# rsub: write remote file in local sublime
+### 4. use rsub: write remote file in local sublime
 
 #### Settings
 A. install rsub on server
