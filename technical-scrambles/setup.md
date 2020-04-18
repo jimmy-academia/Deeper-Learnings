@@ -1,48 +1,48 @@
 # setting up a server
 >after you connect to the server, set up your local device and server in the following methods to automate your work!
 
-## ssh automation
+## 1. ssh automation
 
-### 1. use ssh config
+### prepare ssh config
 
-create with ```touch ~/.ssh/config```
-typical config file example:
+at local system, create the ssh config file, and write in it:  
 ```
-Host server
-    HostName <ip address>
-    User jimmy
-    Port 1000
-    ServerAliveInterval 60
-```
+touch ~/.ssh/config
 
-### 2. use ssh keys
-
-in local, (if no ```~/.ssh/id_rsa``` exists):
-do  ```ssh-keygen```  
-use ssh agent
+    Host server
+        HostName <ip address>
+        User jimmy
+        Port 1000
+        ServerAliveInterval 60
 ```
+### use ssh keys
+
+```
+    >if you do not have ~/.ssh/id_rsa key in local system<
+ssh-keygen 
+...
+
+    >setup a ssh agent to remember your key<
 eval $(ssh-agent)
-ssh-add	
-```
-then do ```ssh-copy-id username@remote_host``` and login with password  
+ssh-add
+    
+    >use ssh-copy-id and login with your password<
+
+ssh-copy-id username@remote_host
+```  
 > possible issue: key too open
-> ```
-> sudo chmod 600 ~/.ssh/id_rsa
-> sudo chmod 600 ~/.ssh/id_rsa.pub
-> sudo chmod 600 ~/.ssh/config
-> ```
 > ```
 > chmod 600 ~/.ssh/id_rsa
 > chmod 600 ~/.ssh/id_rsa.pub
 > chmod 600 ~/.ssh/config
 > ```
 
-
 > ref:
 (ssh key)   https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1604  
 (key too open issue)  https://www.howtogeek.com/168119/fixing-warning-unprotected-private-key-file-on-linux/  
 (ssh agent)  https://unix.stackexchange.com/questions/12195/how-to-avoid-being-asked-passphrase-each-time-i-push-to-bitbucket   
-### 3. install conda environment
+
+### 2. install conda environment
 
 #### Installing Guide
 A. get latest distribution from https://www.anaconda.com/distribution/
