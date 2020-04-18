@@ -31,6 +31,11 @@ then do ```ssh-copy-id username@remote_host``` and login with password
 > sudo chmod 600 ~/.ssh/id_rsa.pub
 > sudo chmod 600 ~/.ssh/config
 > ```
+> ```
+> chmod 600 ~/.ssh/id_rsa
+> chmod 600 ~/.ssh/id_rsa.pub
+> chmod 600 ~/.ssh/config
+> ```
 
 
 > ref:
