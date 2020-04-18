@@ -19,14 +19,18 @@ Host server
 
 in local, (if no ```~/.ssh/id_rsa``` exists):
 do  ```ssh-keygen```  
+use ssh agent
+```
+eval $(ssh-agent)
+ssh-add	
+```
 then do ```ssh-copy-id username@remote_host``` and login with password  
 > possible issue: key too open
 > ```
 > sudo chmod 600 ~/.ssh/id_rsa
 > sudo chmod 600 ~/.ssh/id_rsa.pub
+> sudo chmod 600 ~/.ssh/config
 > ```
-
-finally use ssh agent and save time ```ssh-add```
 
 
 > ref:
