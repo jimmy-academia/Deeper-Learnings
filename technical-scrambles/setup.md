@@ -12,9 +12,11 @@ touch ~/.ssh/config
     > in .ssh/config <
 Host server
     HostName <ip address>
-    User jimmy
-    Port 1000
-    ServerAliveInterval 60
+    Port <port address, if needed>
+    User <user name>
+
+
+    ServerAliveInterval 60 
 ```
 ### use ssh keys
 
@@ -111,7 +113,9 @@ Host <ssh-name>
     HostName url.com
     Port <port number>
     User <user name>
-    RemoteForward 52698 localhost:52698
+    RemoteForward 52698 localhost:52698 (for rsub)
+    ServerAliveInterval 60
+    ForwardAgent yes  (ssh agent after exit from middle server, this is better)
 ```
 > or use command line with port forwarding
 `ssh -R 52698:localhost:52698 server_user@server_address`
@@ -227,4 +231,9 @@ editing .bashrc have no effect at first cause the server I ssh into
 is actually using zsh, took me a while to realize.
 simply adding ```source .bashrc``` in zshrc finished it all.
 
+### 5. Miscellaneous
+
+hush login prompt (Welcome to Ubuntu) for Ubuntu machines:
+`touch ~/.hushlogin`
+https://askubuntu.com/questions/676374/how-to-disable-welcome-message-after-ssh-login
 
