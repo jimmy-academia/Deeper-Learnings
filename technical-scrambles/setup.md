@@ -132,11 +132,13 @@ will fail when there is another ssh session to same server!
 
 fix: change to a different port (ex: 52699) and fix in the rsub main.py
 ```
-    > shows path to rsub (it is a python file) <
+    > shows path to rsub (it is a python executable file) <
 which rsub
     
-    > open the rsub file <
-        find
+    > open the rsub file (use vim!!, using rsub will break the executable and turn it to plain text) <
+        
+        find:
+
         # #########################  M a i n  ######################## #
 
         def main():
@@ -152,38 +154,75 @@ which rsub
 For secondary connection, connect the second server to the port that links to local at the first server, e.g., in above case, write `RemoteForward 52700 localhost:52699` in server 1  
 so now `server 2 port 52700 -> server 1 port 52699 -> local port 52698 -> sublime text 3`
 
+If secondary connection has fixed names, try the following
+```
+function ssh {
+    if [ "$1" == "comp" ]; then
+        command ssh -R 52699:localhost:52699 comp
+    elif [ "$1" == "comp2" ]; then
+        command ssh -R 52699:localhost:52699 comp2
+    else
+        command ssh $1
+    fi
+}
+# two [[   ]] causes verbose [[lab not found, only 1[], need spaces!
+```
+
 > ref: https://stackoverflow.com/questions/11818131/warning-remote-port-forwarding-failed-for-listen-port-52698/14594312  
 to suceed in pip install, do `export PATH="~/.local/bin:$PATH"`
 ref: https://github.com/pypa/pip/issues/3813  
 
-### 4. setup .bashrc/.bash_profile in server
+### 4. Setup .bashrc/.bash_profile for proper greeting in server
 
-some functions I add in .bashrc
+some functions I add in `~/.bashrc` (after `conda init` except first part)
 
 ```
+## put on top of conda for colorful command prompt
+export PS1="\[\033[38;5;39m\]\u\[\033[90m\] at \[\033[32m\]\h \[\033[90m\]in \[\033[33m\]\w\[\033[m\]$ "
+
+
+
 source activate <env name>
 alias subl='rsub'
+alias gpuu='watch -n 0.1 nvidia-smi'
 
 function hello(){
 	echo "what a wonderful day!"
 	echo "let's start working!!"
+    cd <some work directory>
+    ls
 }
-hello
+
+or even better (with color):
+
+function hello(){
+    echo "+ + + + + + + + + + + + + + + + + + + + + + + + "
+    echo ""
+    echo -e "\e[93m  Greeting Message \e[0m"
+    echo ""
+    echo "+ + + + + + + + + + + + + + + + + + + + + + + + "
+    echo -e "\e[38;5;208m  taking you to ~/house \e[0m"
+    echo -e "\e[38;5;208m  starting location for current projects \e[0m"
+}
 
 function dogit() {
     git add .
     git commit -a -m "$1"
     git push
 }
+
+hello
 ```
 
-first 2 lines are for rsub (see below)
-last function is for git
-
-ref:  
+>ref:  
 (how bashrc work)https://www.thegeekstuff.com/2008/10/execution-sequence-for-bash_profile-bashrc-bash_login-profile-and-bash_logout/
 
-> Cautions and debuggings
+> ref color code, for PS1:
+https://gist.github.com/jbutton/9874192
+> ref color code, for echo -e:
+https://misc.flogisoft.com/bash/tip_colors_and_formatting
+
+>sidenote
 editing .bashrc have no effect at first cause the server I ssh into
 is actually using zsh, took me a while to realize.
 simply adding ```source .bashrc``` in zshrc finished it all.
