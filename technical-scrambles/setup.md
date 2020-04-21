@@ -241,8 +241,18 @@ is actually using zsh, took me a while to realize.
 simply adding ```source .bashrc``` in zshrc finished it all.
 
 ### 5. Miscellaneous
+* setup screen white bar (to differentiate screen and ssh mode)
+```
+touch ~/.screenrc
 
-hush login prompt (Welcome to Ubuntu) for Ubuntu machines:
+    > in ~/.screenrc <
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%S"
+```
+
+
+* hush login prompt (Welcome to Ubuntu) for Ubuntu machines:
 `touch ~/.hushlogin`
 https://askubuntu.com/questions/676374/how-to-disable-welcome-message-after-ssh-login
 
