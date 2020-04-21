@@ -178,9 +178,17 @@ ref: https://github.com/pypa/pip/issues/3813
 
 ### 4. Setup .bashrc/.bash_profile for proper greeting in server
 
-some functions I add in `~/.bashrc` (after `conda init` except first part)
+some functions I add in `~/.bashrc` (after `conda init` except first and second part)
 
 ```
+## at the very top: 
+# if not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+
 ## put on top of conda for colorful command prompt
 export PS1="\[\033[38;5;39m\]\u\[\033[90m\] at \[\033[32m\]\h \[\033[90m\]in \[\033[33m\]\w\[\033[m\]$ "
 
@@ -217,6 +225,8 @@ function dogit() {
 
 hello
 ```
+
+#### WARNING: the first is needed if you want to use the hello function without breaking scp
 
 >ref:  
 (how bashrc work)https://www.thegeekstuff.com/2008/10/execution-sequence-for-bash_profile-bashrc-bash_login-profile-and-bash_logout/
