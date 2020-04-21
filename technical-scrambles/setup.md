@@ -230,11 +230,10 @@ hello
 
 >ref:  
 (how bashrc work)https://www.thegeekstuff.com/2008/10/execution-sequence-for-bash_profile-bashrc-bash_login-profile-and-bash_logout/
-
-> ref color code, for PS1:  
-https://gist.github.com/jbutton/9874192  
-> ref color code, for echo -e:  
-https://misc.flogisoft.com/bash/tip_colors_and_formatting  
+(color code, for PS1)https://gist.github.com/jbutton/9874192  
+(color code, for echo -e)https://misc.flogisoft.com/bash/tip_colors_and_formatting  
+(scp breaks)https://superuser.com/questions/395356/scp-doesnt-work-but-ssh-does
+https://superuser.com/questions/395356/scp-doesnt-work-but-ssh-does/1380194#1380194
 
 >sidenote
 editing .bashrc have no effect at first cause the server I ssh into
