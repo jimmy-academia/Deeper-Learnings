@@ -251,8 +251,10 @@ hardstatus alwayslastline
 hardstatus string "%S"
 ```
 
-
 * hush login prompt (Welcome to Ubuntu) for Ubuntu machines:
-`touch ~/.hushlogin`
+```touch ~/.hushlogin```
 https://askubuntu.com/questions/676374/how-to-disable-welcome-message-after-ssh-login
-
+and write 
+```last -w | grep "$USER" | head -n1 | perl -lane 'END{print "Last login: @F[3..6] $F[8] from $F[2]"}'```
+in `.ssh/rc` to retain login information
+https://unix.stackexchange.com/questions/260813/bash-hushlogin-keep-last-login-time-and-host
