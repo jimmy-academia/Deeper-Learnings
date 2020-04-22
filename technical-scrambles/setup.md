@@ -257,4 +257,5 @@ https://askubuntu.com/questions/676374/how-to-disable-welcome-message-after-ssh-
 and write 
 ```last -w | grep "$USER" | head -n1 | perl -lane 'END{print "Last login: @F[3..6] $F[8] from $F[2]"}'```
 in `.ssh/rc` to retain login information
+NOTE: add the interactive clause (4.) to prevent breaking scp 
 https://unix.stackexchange.com/questions/260813/bash-hushlogin-keep-last-login-time-and-host
