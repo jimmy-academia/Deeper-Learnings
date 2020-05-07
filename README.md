@@ -9,3 +9,4 @@ my tutorials for every programing problem I have (while trying make my deep lear
 ## Simple Pytorch
 * ### [Basic Usages](simple-pytorch/basic.md)
 * ### [simple acceleration for Pytorch](simple-pytorch/simple_acc.md)
+* ### [dataloading in Pytorch](simple-pytorch/dataloader.md)
