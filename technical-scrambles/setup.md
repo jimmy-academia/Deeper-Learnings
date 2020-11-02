@@ -281,3 +281,5 @@ function gdown() {
     "https://drive.google.com$download_link" > $file_name
 }
 ```
+>ref:
+https://afun.medium.com/downloading-big-file-form-google-drive-with-curl-7918bc3b2605
