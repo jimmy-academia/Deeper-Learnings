@@ -1,5 +1,6 @@
 # setting up a server
 >after you connect to the server, set up your local device and server in the following methods to automate your work!
+>cheat sheet: [my own fast setup](technical-scrambles/mofastsetup.md)
 
 ## 1. setup ssh automation
 
