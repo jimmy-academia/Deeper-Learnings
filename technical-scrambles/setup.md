@@ -260,3 +260,24 @@ and write
 in `.ssh/rc` to retain login information
 NOTE: add the interactive clause (4.) to prevent breaking scp 
 https://unix.stackexchange.com/questions/260813/bash-hushlogin-keep-last-login-time-and-host
+
+* bash script for downloading from google drive
+```
+function gdown() {
+    # gdown <FILE_ID> <OUTPUT_FILENAME>
+    file_id=$1
+    file_name=$2
+    
+    # first stage to get the warning html
+    curl -c /tmp/cookies \
+    "https://drive.google.com/uc?export=download&id=$file_id" > \
+    /tmp/intermezzo.html
+
+    # second stage to extract the download link from html above
+    download_link=$(cat /tmp/intermezzo.html | \
+    grep -Po 'uc-download-link" [^>]* href="\K[^"]*' | \
+    sed 's/\&amp;/\&/g')
+    curl -L -b /tmp/cookies \
+    "https://drive.google.com$download_link" > $file_name
+}
+```
