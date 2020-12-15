@@ -177,6 +177,28 @@ function ssh {
 to suceed in pip install, do `export PATH="~/.local/bin:$PATH"`
 ref: https://github.com/pypa/pip/issues/3813  
 
+### 3.5 useful sublime preferance settings
+`Preferences/Setting`
+```
+{
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"open_files_in_new_window": true,
+	"translate_tabs_to_spaces": true,
+	"word_wrap": true,
+}
+```
+`Preferences/Key Bindings`
+```
+[
+	{
+		"keys": ["shift+space"], "command": "move", "args": {"by": "characters", "forward": true}
+	}	
+]
+```
+
 ### 4. Setup .bashrc/.bash_profile for proper greeting in server
 
 some functions I add in `~/.bashrc` (after `conda init` except first and second part)
