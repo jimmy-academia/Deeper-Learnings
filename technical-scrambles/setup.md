@@ -92,6 +92,8 @@ https://www.digitalocean.com/community/tutorials/how-to-install-anaconda-on-ubun
 
 ### 3. Install rsub: write remote file in local sublime text editor
 
+### UPDATE: use remoteSUBL, similar but better
+
 #### Installation Guide
 A. Install rsub on server
 ```
