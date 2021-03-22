@@ -2,7 +2,7 @@
 my tutorials for every programing problem I have (while trying make my deep learning models work!)
 
 ## Techincal scrambles
-* ### [conda cheatsheet](otherstuffs/conda_cheatsheet.jpeg)
+* ### [conda cheatsheet](otherstuffs/conda_cheatsheet.pdf)
     ```bash
     # create new environment
     conda create --name <name> python=3.5
