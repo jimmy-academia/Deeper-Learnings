@@ -2,7 +2,7 @@
 my tutorials for every programing problem I have (while trying make my deep learning models work!)
 
 ## Techincal scrambles
-* ### [conda cheatsheet](otherstuffs/conda_cheatsheet.pdf)
+* ### [conda cheatsheet](otherstuffs/conda-cheatsheet.pdf)
     ```bash
     # create new environment
     conda create --name <name> python=3.5
@@ -20,6 +20,7 @@ my tutorials for every programing problem I have (while trying make my deep lear
 
 ## Simple Pytorch
 * ### [template pytorch directory](simple-pytorch/goodwork)
+    > train.py; model.py; dataset.py; utils.py
 * ### [Basic Usages](simple-pytorch/basic.md)
 * ### [simple acceleration for Pytorch](simple-pytorch/simple_acc.md)
 * ### [dataloading in Pytorch](simple-pytorch/dataloader.md)
