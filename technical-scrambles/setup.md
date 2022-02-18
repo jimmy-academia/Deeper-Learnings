@@ -7,7 +7,7 @@
 ### prepare ssh config
 
 at local system, create the ssh config file, and write in it:  
-```
+```bash
 touch ~/.ssh/config
 
     > in .ssh/config <
@@ -21,7 +21,7 @@ Host server
 ```
 ### use ssh keys
 
-```
+```bash
     > if you do not have ~/.ssh/id_rsa key in local system <
 ssh-keygen 
 ...
@@ -74,7 +74,7 @@ B. Run script to install
 (say yes to prepend in bashrc or run init!)
 
 C. Activate, test and create new Environment
-```
+```bash
 source ~/.bashrc
 conda list
 conda create --name my_env python=3
@@ -96,7 +96,7 @@ https://www.digitalocean.com/community/tutorials/how-to-install-anaconda-on-ubun
 
 #### Installation Guide
 A. Install rsub on server
-```
+```bash
 conda install pip
 pip install rsub
 ```
@@ -138,7 +138,7 @@ http://blog.keyrus.co.uk/editing_files_on_a_remote_server_using_sublime.html
 will fail when there is another ssh session to same server!  
 
 fix: change to a different port (ex: 52699) and fix in the rsub main.py
-```
+```bash
     > shows path to rsub (it is a python executable file) <
 which rsub
     
@@ -162,7 +162,7 @@ For secondary connection, connect the second server to the port that links to lo
 so now `server 2 port 52700 -> server 1 port 52699 -> local port 52698 -> sublime text 3`
 
 If secondary connection has fixed names, try the following
-```
+```bash
 function ssh {
     if [ "$1" == "comp" ]; then
         command ssh -R 52699:localhost:52699 comp
@@ -205,7 +205,7 @@ ref: https://github.com/pypa/pip/issues/3813
 
 some functions I add in `~/.bashrc` (after `conda init` except first and second part)
 
-```
+```bash
 ## at the very top: 
 # if not running interactively, don't do anything
 case $- in
@@ -267,7 +267,7 @@ simply adding ```source .bashrc``` in zshrc finished it all.
 
 ### 5. Miscellaneous
 * setup screen white bar (to differentiate screen and ssh mode)
-```
+```bash
 touch ~/.screenrc
 
     > in ~/.screenrc <
@@ -285,8 +285,14 @@ in `.ssh/rc` to retain login information
 NOTE: add the interactive clause (4.) to prevent breaking scp 
 https://unix.stackexchange.com/questions/260813/bash-hushlogin-keep-last-login-time-and-host
 
-* bash script for downloading from google drive
+
+* github id_rsa keychain
+```bash
+ssh-add -k ~/.ssh/id_rsa
 ```
+
+* bash script for downloading from google drive
+```bash
 function gdown() {
     # gdown <FILE_ID> <OUTPUT_FILENAME>
     file_id=$1
