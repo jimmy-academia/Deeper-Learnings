@@ -4,14 +4,13 @@ my tutorials for every programing problem I have (while trying make my deep lear
 ## Techincal scrambles
 * ### [conda cheatsheet](otherstuffs/conda-cheatsheet.pdf)
     ```bash
-    # create new environment
-    conda create --name <name> python=3.5
-    # list environments
-    conda env list
-    # activate; deactivate
-    conda activate <name>; conda deactivate
-    # delete environment
-    conda env remove --name <name>
+    
+    conda create --name [name] python=3         # create new environment
+    conda create --clone [old] --name [new]
+    
+    conda env list                              # list environments
+    conda activate [name]; conda deactivate     # activate; deactivate
+    conda env remove --name [name]              # delete environment
     ```
 * ### [setting up a server](technical-scrambles/setup.md)
     > ssh automation; conda environment; rsub-sublime; bashrc settings
