@@ -251,6 +251,42 @@ function dogit() {
 hello
 ```
 
+* Useful bash function for gpu server
+```bash
+function supertranspose() {
+    awk '
+        { 
+            for (i=1; i<=NF; i++)  {
+                a[NR,i] = $i
+            }
+        }
+        NF>p { p = NF }
+        END {    
+            rowname["1"] = "the GPU id:\t";
+            rowname["2"] = "used memory:\t";
+            for(j=1; j<=p; j++) {
+                if (a[1,2] <= 200)
+                    str=rowname[j]"\033[1;35m"a[1,j]"\033[37m"
+                else
+                    str=rowname[j]a[1,j]
+                for(i=2; i<=NR; i++){
+                    if (a[i,2] <= 200)
+                        str=str"\t\033[1;35m"a[i,j]"\033[37m";
+                    else
+                        str=str"\t"a[i,j];
+                }
+                print str
+            }
+        }' $1
+}
+
+function gg(){
+    nvidia-smi --query-gpu=index,memory.free,memory.total --format=csv,nounits,noheader | awk '{print substr($1, 1, 1) " " $3-$2}' | sort -n -k1.3 | supertranspose
+}
+```
+
+
+
 #### WARNING: the first is needed if you want to use the hello function without breaking scp
 
 >ref:  
