@@ -18,9 +18,9 @@ my tutorials for every programing problem I have (while trying make my deep lear
 <!-- * ### [wget google drive files (not folder)](technical-scrambles/wget_gdrive.md) -->
 
 * ### [git problems](technical-scrambles/gitundo.md)
-    > git basics add, commit, push
-    > git branch, merge, fetch ...
-    > undo last commit for large file
+    > git basics add, commit, push  
+    > git branch, merge, fetch ...  
+    > undo last commit for large file  
 
     
 ## Simple Python
