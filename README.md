@@ -17,7 +17,7 @@ my tutorials for every programing problem I have (while trying make my deep lear
     * #### [my own fast setup](technical-scrambles/mofastsetup.md)
 <!-- * ### [wget google drive files (not folder)](technical-scrambles/wget_gdrive.md) -->
 
-* ### [git problems](techinical-scrambles/gitundo.md)
+* ### [git problems](technical-scrambles/gitundo.md)
     > undo last commit for large file
 
     
