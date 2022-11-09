@@ -22,6 +22,7 @@ git checkout -b newfix #create newfix ... commit fixes
 ```bash
 git checkout main
 git merge newfix # will fast-forward to newfix or else require manual merging
+git branch --delete newfix # delete branch
 ```
 
 * push new branch to github
