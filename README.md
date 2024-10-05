@@ -25,7 +25,8 @@ my tutorials for every programing problem I have (while trying make my deep lear
     
 ## Simple Python
 * ### [open file](python/openfile.md)
-
+* ### [interactive debugging](interactive_debugging.py)
+> note: Visual Studio Code has better UI; for use when VScode not installed.
 
 ## Simple Pytorch
 * ### [template pytorch directory](simple-pytorch/goodwork)
