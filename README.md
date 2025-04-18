@@ -22,7 +22,9 @@ my tutorials for every programing problem I have (while trying make my deep lear
     > git branch, merge, fetch ...  
     > undo last commit for large file  
 
-    
+
+## [Research Code Best Practices](best_practice/README.md)
+
 ## Simple Python
 * ### [open file](python/openfile.md)
 * ### [interactive debugging](interactive_debugging.py)
