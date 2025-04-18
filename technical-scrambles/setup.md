@@ -48,6 +48,18 @@ ssh-copy-id username@remote_host
 
 ### 2. setup conda environment
 
+#### [conda cheatsheet](otherstuffs/conda-cheatsheet.pdf)
+    ```bash
+    
+    conda create --name [name] python=3         # create new environment
+    conda create --clone [old] --name [new]
+    
+    conda env list                              # list environments
+    conda activate [name]; conda deactivate     # activate; deactivate
+    conda env remove --name [name]              # delete environment
+    ```
+
+
 #### Installation Guide
 
 A. Get latest distribution from https://www.anaconda.com/distribution/, copy link and download
