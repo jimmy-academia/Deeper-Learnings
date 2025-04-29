@@ -3,6 +3,12 @@ my tutorials for every programing problem I have (while trying make my deep lear
 
 ## Techincal scrambles
 
+* ### [uv initialization]
+```
+uv init . --name [project name]
+uv venv ## or uv run main.py
+```
+
 * ### [setting up a server](technical-scrambles/setup.md)
     > (2025 update, `uv python` is much better than `conda`)
     > ssh automation; conda environment; rsub-sublime; bashrc settings
