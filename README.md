@@ -13,6 +13,7 @@ uv venv ## or uv run main.py
     > (2025 update, `uv python` is much better than `conda`)
     > ssh automation; conda environment; rsub-sublime; bashrc settings
     * #### [my own fast setup](technical-scrambles/mofastsetup.md)
+    * #### [bashrc setup](technical-scrambles/bash)
 <!-- * ### [wget google drive files (not folder)](technical-scrambles/wget_gdrive.md) -->
 
 * ### [git problems](technical-scrambles/gitundo.md)
