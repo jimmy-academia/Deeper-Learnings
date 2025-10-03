@@ -111,7 +111,45 @@ alias python='python3'
 #     fi
 #     done
 # }
-alias pssu='ps -u jimmyyeh |grep sshd'
+# alias pssu='ps -u jimmyyeh |grep sshd'
+
+function pssu() {
+    # grab sshd PIDs for user jimmyyeh
+    local pids
+    pids=$(ps -u jimmyyeh | grep sshd | awk '{print $1}')
+
+    if [ -z "$pids" ]; then
+        echo "No sshd processes found."
+        return
+    fi
+
+    echo "Found sshd PIDs:"
+    echo "$pids"
+
+    # keep the last one, kill others
+    local keep_pid old_pids
+    keep_pid=$(echo "$pids" | tail -n1)
+    old_pids=$(echo "$pids" | head -n -1)
+
+    if [ -z "$old_pids" ]; then
+        echo "Only one sshd PID ($keep_pid). Nothing to kill."
+        return
+    fi
+
+    echo "Will KEEP: $keep_pid"
+    echo "Will KILL: $old_pids"
+
+    # confirm
+    read -r -n1 -p "Proceed? [Enter/any key=yes, n=abort] " ans
+    echo
+    if [ "$ans" = "n" ] || [ "$ans" = "N" ]; then
+        echo "Aborted."
+        return
+    fi
+
+    kill $old_pids && echo "Killed: $old_pids"
+}
+
 alias gpuu='watch -n 0.1 nvidia-smi'
 
 function supertranspose() {
@@ -149,13 +187,10 @@ function gg(){
 LS_COLORS=$LS_COLORS:'di=36:*.py=0;37:' ; export LS_COLORS
 
 function parse_git_branch() {
-    echo | git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/'
-}
-function parse_conda_env() {
-    echo | conda env list | grep '*' | awk 'END {print "("$1")"}'    
+    git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/ [\1]/p'
 }
 function file_count(){
-    echo | ls | wc -l
+    ls -1A | wc -l
 }
 
 function cd {
@@ -165,9 +200,7 @@ function cd {
                 DIR=$HOME;
     fi;
     builtin cd "${DIR}" &&\
-    # export PS1="\[\033[31m\]\u\[\033[90m\] at \[\033[32m\]\h \[\033[90m\]in \[\033[33m\]\w\[\033[1;90m\]$(parse_git_branch)\[\033[00m\] $ " &&\
-    export PS1="\[\033[31m\]\u\[\033[90m\] at \[\033[32m\]\h \[\033[90m\]in \[\033[33m\]\w\[\033[1;90m\]$parse_git_branch\[\033[00m\] $ " &&\
-    # export PS1="$(parse_conda_env) \[\033[31m\]\u\[\033[90m\] at \[\033[32m\]\h \[\033[90m\]in \[\033[33m\]\w\[\033[1;90m\]$parse_git_branch\[\033[00m\] $ " &&\
+    export PS1="\[\033[31m\]\u\[\033[90m\] at \[\033[32m\]\h \[\033[90m\]in \[\033[33m\]\w\[\033[1;90m\]\$(parse_git_branch)\[\033[00m\] $ "
     if [ $(file_count) -gt 30 ]; then
         ls -b | head -30 | xargs ls -F --color=auto
         echo -e "\e[90m......total $(file_count) files/directories \e[0m" 
